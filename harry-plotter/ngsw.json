@@ -1,0 +1,85 @@
+{
+  "configVersion": 1,
+  "timestamp": 1626389497768,
+  "index": "/harry-plotter/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/harry-plotter/index.html",
+        "/harry-plotter/main.2f0a6a2df27476a116cc.js",
+        "/harry-plotter/manifest.webmanifest",
+        "/harry-plotter/polyfills.5cd0d8dcaec8551ceb8a.js",
+        "/harry-plotter/runtime.7c183c7d9de1b28c4011.js",
+        "/harry-plotter/styles.31d6cfe0d16ae931b73c.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/harry-plotter/assets/favicon.png",
+        "/harry-plotter/assets/icone.pdn",
+        "/harry-plotter/assets/icons/icon-128x128.png",
+        "/harry-plotter/assets/icons/icon-144x144.png",
+        "/harry-plotter/assets/icons/icon-152x152.png",
+        "/harry-plotter/assets/icons/icon-192x192.png",
+        "/harry-plotter/assets/icons/icon-384x384.png",
+        "/harry-plotter/assets/icons/icon-512x512.png",
+        "/harry-plotter/assets/icons/icon-72x72.png",
+        "/harry-plotter/assets/icons/icon-96x96.png",
+        "/harry-plotter/favicon.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/harry-plotter/assets/favicon.png": "2969285a633392eeabe07993ef26c4e09ebaef9e",
+    "/harry-plotter/assets/icone.pdn": "693a80bff978a7183ee22acf043166ef0d1631e7",
+    "/harry-plotter/assets/icons/icon-128x128.png": "0d5aa2aba5ce74151d5a21d5f29607699141b72d",
+    "/harry-plotter/assets/icons/icon-144x144.png": "ea3479dcb8c4824cad78d9a79112303bb0121a88",
+    "/harry-plotter/assets/icons/icon-152x152.png": "6af1fd133d20083aefe175f623e510c271898351",
+    "/harry-plotter/assets/icons/icon-192x192.png": "b910ab6c15f79890feb5ce63135c868123eb3e2d",
+    "/harry-plotter/assets/icons/icon-384x384.png": "52fff5ce8f93ddcf17f3e2399fdea4eb96405a25",
+    "/harry-plotter/assets/icons/icon-512x512.png": "8539f625cb59c9be53aff55ea07ad61e9ec4f4a1",
+    "/harry-plotter/assets/icons/icon-72x72.png": "318de43646f82e0f24c9c7c2f643af883926daa1",
+    "/harry-plotter/assets/icons/icon-96x96.png": "35e69717c90cf02eca4405f6282722096d45c684",
+    "/harry-plotter/favicon.png": "2969285a633392eeabe07993ef26c4e09ebaef9e",
+    "/harry-plotter/index.html": "a3972fa159a4c158e1f1cb501edaad59cf280757",
+    "/harry-plotter/main.2f0a6a2df27476a116cc.js": "e94ed3bf1c77b48e531e036411260b98bcc96415",
+    "/harry-plotter/manifest.webmanifest": "85a2ad3024e5fbc2d948b3ef5cd292ace695f852",
+    "/harry-plotter/polyfills.5cd0d8dcaec8551ceb8a.js": "860abfa079487635ae7ccf76dec826b2216c779f",
+    "/harry-plotter/runtime.7c183c7d9de1b28c4011.js": "5c7d38365bcfb821bfeb7471da20fad8721a2feb",
+    "/harry-plotter/styles.31d6cfe0d16ae931b73c.css": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}

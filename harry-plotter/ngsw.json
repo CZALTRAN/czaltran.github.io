@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1626389497768,
+  "timestamp": 1626390035878,
   "index": "/harry-plotter/index.html",
   "assetGroups": [
     {
@@ -58,7 +58,7 @@
     "/harry-plotter/favicon.png": "2969285a633392eeabe07993ef26c4e09ebaef9e",
     "/harry-plotter/index.html": "a3972fa159a4c158e1f1cb501edaad59cf280757",
     "/harry-plotter/main.2f0a6a2df27476a116cc.js": "e94ed3bf1c77b48e531e036411260b98bcc96415",
-    "/harry-plotter/manifest.webmanifest": "85a2ad3024e5fbc2d948b3ef5cd292ace695f852",
+    "/harry-plotter/manifest.webmanifest": "e5288a9ffd99edab02987482e393843c56b31c9d",
     "/harry-plotter/polyfills.5cd0d8dcaec8551ceb8a.js": "860abfa079487635ae7ccf76dec826b2216c779f",
     "/harry-plotter/runtime.7c183c7d9de1b28c4011.js": "5c7d38365bcfb821bfeb7471da20fad8721a2feb",
     "/harry-plotter/styles.31d6cfe0d16ae931b73c.css": "da39a3ee5e6b4b0d3255bfef95601890afd80709"

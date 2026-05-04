@@ -316,7 +316,7 @@ function buildPGABarras() {
   destroyChart('pgaBarras');
 
   const labels = pgaData.rubricas.map(r => r.rubrica);
-  const data   = pgaData.rubricas.map(r => r.total);
+  const data   = pgaData.rubricas.map(r => Math.abs(r.total));
   const colors = pgaData.rubricas.map(r =>
     r.tipo === 'receita' ? '#2ecc71' : '#e74c3c'
   );

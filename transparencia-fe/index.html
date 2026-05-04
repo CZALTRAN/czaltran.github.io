@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal da Transparência — Faculdade de Economia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════
+       HEADER
+  ══════════════════════════════════════════════ -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="header-brand">
+        <img src="logo.png" alt="Logo" class="logo" onerror="this.style.display='none'">
+        <div class="header-text">
+          <h1 id="titulo-faculdade">Faculdade de Economia</h1>
+          <span class="header-sub">Portal da Transparência</span>
+        </div>
+      </div>
+      <div class="header-meta">
+        <span class="badge-semestre" id="badge-semestre">—</span>
+        <div class="ultima-atualizacao">
+          <span class="dot dot-live"></span>
+          <span id="ultima-atualizacao">Carregando...</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════
+       NAVEGAÇÃO POR ABAS
+  ══════════════════════════════════════════════ -->
+  <nav class="nav-tabs" role="tablist">
+    <div class="container nav-tabs-inner">
+      <button class="tab-btn active" data-tab="visao-geral" role="tab" aria-selected="true">Visão Geral</button>
+      <button class="tab-btn" data-tab="pga" role="tab" aria-selected="false">PGA</button>
+      <button class="tab-btn" data-tab="miar" role="tab" aria-selected="false">MIAR</button>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════
+       CONTEÚDO PRINCIPAL
+  ══════════════════════════════════════════════ -->
+  <main class="main container">
+
+    <!-- Estado de carregamento -->
+    <div id="loading" class="state-loading">
+      <div class="spinner"></div>
+      <p>Carregando dados da planilha...</p>
+    </div>
+
+    <!-- Estado de erro -->
+    <div id="erro" class="state-erro" style="display:none">
+      <span class="erro-icon">⚠️</span>
+      <p>Não foi possível carregar os dados.</p>
+      <p class="state-erro__sub">Verifique a conexão ou se a planilha está publicada como pública.</p>
+    </div>
+
+    <!-- ─── ABA: VISÃO GERAL ─── -->
+    <section id="tab-visao-geral" class="tab-section" style="display:none" role="tabpanel">
+
+      <div class="kpi-grid kpi-grid--4">
+        <div class="kpi-card kpi-card--receita">
+          <div class="kpi-label">Receitas PGA</div>
+          <div class="kpi-value" id="kpi-receitas">—</div>
+          <div class="kpi-sub">Total de entradas</div>
+        </div>
+        <div class="kpi-card kpi-card--despesa">
+          <div class="kpi-label">Despesas PGA</div>
+          <div class="kpi-value" id="kpi-despesas">—</div>
+          <div class="kpi-sub">Total de saídas</div>
+        </div>
+        <div class="kpi-card kpi-card--saldo">
+          <div class="kpi-label">Saldo Disponível</div>
+          <div class="kpi-value" id="kpi-saldo">—</div>
+          <div class="kpi-sub">PGA</div>
+        </div>
+        <div class="kpi-card kpi-card--miar">
+          <div class="kpi-label">Total MIAR</div>
+          <div class="kpi-value" id="kpi-miar-total">—</div>
+          <div class="kpi-sub">Orçamento MIAR</div>
+        </div>
+      </div>
+
+      <div class="charts-row">
+        <div class="chart-card">
+          <h3 class="chart-title">Distribuição PGA por Rubrica</h3>
+          <div class="chart-wrap chart-wrap--donut">
+            <canvas id="chart-pga-rosca"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <h3 class="chart-title">Distribuição MIAR por Categoria</h3>
+          <div class="chart-wrap chart-wrap--donut">
+            <canvas id="chart-miar-pizza"></canvas>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ─── ABA: PGA ─── -->
+    <section id="tab-pga" class="tab-section" style="display:none" role="tabpanel">
+
+      <div class="section-header">
+        <h2>PGA — Plano de Gestão Anual</h2>
+        <p>Receitas e despesas do Programa de Gestão e Atividades (PGA/UFMT)</p>
+      </div>
+
+      <div class="kpi-grid kpi-grid--3">
+        <div class="kpi-card kpi-card--receita">
+          <div class="kpi-label">Total Receitas</div>
+          <div class="kpi-value" id="kpi-pga-receitas">—</div>
+        </div>
+        <div class="kpi-card kpi-card--despesa">
+          <div class="kpi-label">Total Despesas</div>
+          <div class="kpi-value" id="kpi-pga-despesas">—</div>
+        </div>
+        <div class="kpi-card kpi-card--saldo">
+          <div class="kpi-label">Saldo Disponível</div>
+          <div class="kpi-value" id="kpi-pga-saldo">—</div>
+        </div>
+      </div>
+
+      <div class="chart-card chart-card--full">
+        <h3 class="chart-title">Receitas e Despesas por Rubrica</h3>
+        <div class="chart-wrap chart-wrap--bar">
+          <canvas id="chart-pga-barras"></canvas>
+        </div>
+      </div>
+
+      <div class="table-card">
+        <h3 class="table-title">Detalhamento por Rubrica</h3>
+        <div class="table-scroll">
+          <table class="data-table" id="tabela-pga"></table>
+        </div>
+      </div>
+
+      <div class="table-card">
+        <h3 class="table-title">Resumo Financeiro</h3>
+        <div class="table-scroll">
+          <table class="data-table" id="tabela-pga-resumo"></table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ─── ABA: MIAR ─── -->
+    <section id="tab-miar" class="tab-section" style="display:none" role="tabpanel">
+
+      <div class="section-header">
+        <h2>MIAR</h2>
+        <p>Distribuição orçamentária por categoria</p>
+      </div>
+
+      <div class="kpi-grid kpi-grid--1">
+        <div class="kpi-card kpi-card--miar">
+          <div class="kpi-label">Total MIAR</div>
+          <div class="kpi-value" id="kpi-miar-total-2">—</div>
+          <div class="kpi-sub">Orçamento total da aba MIAR</div>
+        </div>
+      </div>
+
+      <div class="charts-row charts-row--single">
+        <div class="chart-card">
+          <h3 class="chart-title">Distribuição por Categoria</h3>
+          <div class="chart-wrap chart-wrap--donut">
+            <canvas id="chart-miar-pizza-2"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-card">
+        <h3 class="table-title">Detalhamento por Categoria</h3>
+        <div class="table-scroll">
+          <table class="data-table" id="tabela-miar"></table>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span id="footer-nome">Faculdade de Economia — UFMT</span>
+      <span class="sep">·</span>
+      <span id="footer-semestre">—</span>
+      <span class="sep">·</span>
+      <span>Fonte: Google Sheets</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

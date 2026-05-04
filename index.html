@@ -1,9 +1,452 @@
-<!doctype html>
-<html>
-    <body>
-        <h1>
-            Olá mundo! Em breve (ou não tão breve) algo será colocado aqui!
-        </h1>
-abc123
-    </body>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>czaltran</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f0f13;
+      --bg2: #16161d;
+      --bg3: #1e1e27;
+      --border: #2a2a35;
+      --text: #e2e2e8;
+      --muted: #6b6b7a;
+      --accent: #a78bfa;
+      --accent2: #60a5fa;
+      --green: #4ade80;
+      --warm: #fb923c;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(15, 15, 19, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 2rem 4rem;
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-eyebrow span {
+      color: var(--green);
+      animation: blink 3s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 90%, 100% { opacity: 1; }
+      95% { opacity: 0; }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-interests {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .interest-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 100px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      font-size: 0.825rem;
+      color: var(--muted);
+      transition: all 0.2s;
+      cursor: default;
+    }
+
+    .interest-pill:hover {
+      border-color: var(--accent);
+      color: var(--text);
+    }
+
+    /* ── SOBRE ── */
+    .section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.85;
+      max-width: 620px;
+    }
+
+    .about-text strong { color: var(--text); font-weight: 500; }
+
+    .about-text p + p { margin-top: 1rem; }
+
+    /* ── PROJETOS ── */
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .project-item {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--bg2);
+      text-decoration: none;
+      color: var(--text);
+      transition: background 0.2s;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-item:last-child { border-bottom: none; }
+
+    .project-item:hover {
+      background: var(--bg3);
+    }
+
+    .project-icon {
+      font-size: 1.4rem;
+      width: 2.5rem;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .project-info {}
+
+    .project-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .project-desc {
+      font-size: 0.825rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .project-arrow {
+      color: var(--border);
+      font-size: 1rem;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .project-item:hover .project-arrow {
+      color: var(--accent);
+      transform: translate(2px, -2px);
+    }
+
+    /* ── AGORA ── */
+    .now-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .now-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      transition: border-color 0.2s;
+    }
+
+    .now-card:hover { border-color: var(--accent); }
+
+    .now-card-label {
+      font-size: 0.7rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.6rem;
+    }
+
+    .now-card-value {
+      font-size: 0.9rem;
+      color: var(--text);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    .now-card-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    footer p {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ── FADE ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 600px) {
+      nav ul { display: none; }
+      .project-item { grid-template-columns: auto 1fr; }
+      .project-arrow { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">czaltran</a>
+    <ul>
+      <li><a href="#sobre">sobre</a></li>
+      <li><a href="#projetos">projetos</a></li>
+      <li><a href="https://github.com/czaltran" target="_blank" rel="noopener">github ↗</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <div class="hero">
+    <p class="hero-eyebrow">olá, mundo<span>_</span></p>
+    <h1>
+      Sou <em>czaltran</em>,<br>
+      e esse é meu<br>
+      cantinho na web.
+    </h1>
+    <p class="hero-desc">
+      Estudante de economia, apreciador de boas músicas e de jogos que te fazem esquecer o horário.
+      Quando não estou estudando, provavelmente estou codando alguma coisa por diversão.
+    </p>
+    <div class="hero-interests">
+      <span class="interest-pill">🎮 jogos</span>
+      <span class="interest-pill">🎵 música</span>
+      <span class="interest-pill">📈 economia</span>
+      <span class="interest-pill">💻 programação</span>
+    </div>
+  </div>
+
+  <!-- ── SOBRE ── -->
+  <section class="section" id="sobre">
+    <p class="section-mono fade-up">// sobre</p>
+    <div class="about-text fade-up">
+      <p>
+        Estudo <strong>Economia</strong> e me interesso bastante pela interseção entre dados,
+        tecnologia e como as coisas funcionam por baixo dos panos — seja num mercado
+        ou num sistema de software.
+      </p>
+      <p>
+        <strong>Jogos</strong> são minha forma favorita de descansar e me desafiar ao mesmo tempo.
+        Tenho um carinho especial por narrativas bem construídas e mecânicas que exigem estratégia.
+      </p>
+      <p>
+        <strong>Música</strong> está sempre presente — no fone enquanto estudo, enquanto codifico,
+        ou só enquanto o dia passa. Gosto de estilos variados dependendo do humor.
+      </p>
+      <p>
+        A programação entrou como hobby e ficou. Gosto de construir coisas que resolvem
+        problemas reais, mesmo que pequenos.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── PROJETOS ── -->
+  <section class="section" id="projetos">
+    <p class="section-mono fade-up">// projetos que fiz</p>
+    <div class="projects-list fade-up">
+
+      <a href="/hackasic/" class="project-item">
+        <span class="project-icon">🎧</span>
+        <div class="project-info">
+          <div class="project-name">hackasic</div>
+          <div class="project-desc">Projeto feito para o Hackathon Sicredi 2022. Desenvolvido em Angular.</div>
+        </div>
+        <span class="project-arrow">↗</span>
+      </a>
+
+      <a href="/harry-plotter/" class="project-item">
+        <span class="project-icon">⚡</span>
+        <div class="project-info">
+          <div class="project-name">harry-plotter</div>
+          <div class="project-desc">Visualizador de polinômios e suas derivadas. Criado para ajudar na matéria de Métodos Quantitativos para Economia. (Harry Potter + Plotter 📉)</div>
+        </div>
+        <span class="project-arrow">↗</span>
+      </a>
+
+      <a href="/levantamento-patrimonial-front/" class="project-item">
+        <span class="project-icon">🗂️</span>
+        <div class="project-info">
+          <div class="project-name">levantamento-patrimonial</div>
+          <div class="project-desc">Front-end para controle e inventário de bens institucionais.</div>
+        </div>
+        <span class="project-arrow">↗</span>
+      </a>
+
+      <a href="/transparencia-fe/" class="project-item">
+        <span class="project-icon">📊</span>
+        <div class="project-info">
+          <div class="project-name">transparencia-fe</div>
+          <div class="project-desc">Portal de transparência financeira da Faculdade de Economia — UFMT.</div>
+        </div>
+        <span class="project-arrow">↗</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── AGORA ── -->
+  <section class="section" id="agora">
+    <p class="section-mono fade-up">// o que rola agora</p>
+    <div class="now-grid fade-up">
+      <div class="now-card">
+        <div class="now-card-label">estudando</div>
+        <div class="now-card-value">Economia</div>
+        <div class="now-card-sub">UFMT</div>
+      </div>
+      <div class="now-card">
+        <div class="now-card-label">jogando</div>
+        <div class="now-card-value">alguma coisa</div>
+        <div class="now-card-sub">sempre tem um jogo aberto</div>
+      </div>
+      <div class="now-card">
+        <div class="now-card-label">ouvindo</div>
+        <div class="now-card-value">tudo que aparece</div>
+        <div class="now-card-sub">shuffle no modo aleatório</div>
+      </div>
+      <div class="now-card">
+        <div class="now-card-label">codando</div>
+        <div class="now-card-value">mais uma ideia</div>
+        <div class="now-card-sub">que apareceu do nada</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>feito com curiosidade · <a href="https://github.com/czaltran" target="_blank" rel="noopener">github.com/czaltran</a></p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.1 }
+    );
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
 </html>
